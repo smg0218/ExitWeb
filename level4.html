@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>방 탈출</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body bgcolor="BLACK" onload="init()">
+	<div class="main">
+		<div>
+			시계를 밀고 나온 통로를 뛰어와 다른 방에 도착했습니다.<br>
+			다행히 통로에서 느껴졌던 시선은 없어진 것 같습니다.<br>
+			이번 방에는 네모난 작은 구멍이 파여져 있었습니다.<br>
+			무슨 용도일까?<br><br>
+			<span class="hintOpen" id="hintOpen" onclick="hintOpen()">Hint</span><p class="hint" id="hint">시계가 몇시였더라?</p><br>
+			<canvas id="canvas" style="background-color:black;" width="400" height="400"></canvas><br><br>
+		</div>
+	</div>
+<script type="text/javascript">
+	let canvas = document.getElementById("canvas"), context = canvas.getContext("2d");
+
+	function init() {
+		context.lineWidth = 2;
+		context.strokeStyle = "white";
+
+		canvas.addEventListener("mousemove", function(e) {move(e)}, false);
+		canvas.addEventListener("mousedown", function(e) {down(e)}, false);
+		canvas.addEventListener("mouseup", function(e) {up(e)}, false);
+		canvas.addEventListener("mouseout", function(e) {out(e)}, false);
+	}
+
+	context.beginPath();
+	context.rect(0, 0, 400, 400);
+	context.strokeStyle = "white";
+	context. lineWidth = 1;
+	context.stroke();
+
+	let startX = 0, startY = 0;
+	let dragging = false;
+
+function draw(curX, curY) {
+	context.beginPath();
+	context.moveTo(startX, startY);
+	context.lineTo(curX, curY);
+	context.stroke();
+}
+
+function down(e) {
+	startX = e.offsetX; startY = e.offsetY; dragging = true;
+}
+function up(e) { dragging = false;}
+function move(e) {
+	const x = e.clientX - 165;
+	const y = e.clientY - 350;
+	if(!dragging)
+		return;
+	if (x > 340 && x < 380) {
+		if(y > 30 && y < 70)
+			nextPage();
+	}
+	let curX = e.offsetX, curY = e.offsetY;
+	draw(curX, curY);
+	startX = curX; startY = curY;
+}
+function out(e) { dragging = false;}
+</script>
+</body>
+</html>

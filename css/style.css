@@ -1,0 +1,66 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+div mark {
+  background-color: white;
+}
+
+.main{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vx;
+  height: 100vx;
+  display: grid;
+}
+
+div div {
+  white-space: nowrap;
+  color: white;
+  margin: 0 auto;
+  font-family: monospace;
+  overflow: hidden;
+  letter-spacing: .15em;
+  animation: typing 1s steps(40, end), blink .5s step-end infinite alternate;
+  }
+.accent {
+  visibility: hidden;
+  color: red;
+  white-space: nowrap;
+  margin: 0 auto;
+  font-family: monospace;
+  overflow: hidden;
+  letter-spacing: .15em;
+  animation: typing 1s steps(40, end), blink .5s step-end infinite alternate;
+  animation-delay: 1s;
+}
+
+.hint {
+  color: yellow;
+  visibility: hidden;
+}
+
+.hintOpen {
+  visibility: hidden;
+  color: blue;
+}
+
+.copper {
+  color: gray;
+  position: absolute;
+  left: 600%;
+  top: 150%;
+}
+
+.grandfatherClock {
+  user-select:none;
+  cursor: text;
+}
+
+@keyframes typing {
+  from {width: 0 }
+  to {width: 100%}
+}

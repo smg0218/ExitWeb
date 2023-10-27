@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>방 탈출</title>
+	<style type="text/css">
+		@keyframes colorChange {
+			0% { background-color : black; }
+			50% { background-color: red; }
+			100% { background-color: black; }
+		}
+
+		body {
+			background-color: black;
+			animation-name: colorChange;
+			animation-duration: 0.5s;
+			animation-iteration-count: infinite;
+		}
+	</style>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript">
+		let time = 0;
+
+		function startScroll(interval) {
+			setInterval("autoScroll()", interval);
+		}
+
+		function autoScroll() {
+			window.scrollBy(0,-10);
+			if (scrollY>1700)
+				time++;
+			else
+				time = 0;
+
+			if(time > 300)
+				nextPage();
+
+		}
+	</script>
+</head>
+<body onload="startScroll(10)">
+	<h2 style="color: white; position: absolute; left: 50%; top: 50%;">달려!</h2>
+	<div style="height: 5000px;"></div>
+</body>
+</html>
